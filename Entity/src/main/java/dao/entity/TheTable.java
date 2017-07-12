@@ -3,19 +3,24 @@ package main.java.dao.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.util.Date;
 
 @Entity
 @Table(name="theTable")
 public class TheTable {
     private int num;
-    private Date timeOfOrder;
+    private Date dateOfOrder;
+    private Time startTime;
+    private Time endTime;
 
 public TheTable(){}
 
-    public TheTable(int num, Date timeOfOrder) {
+    public TheTable(int num, Date dateOfOrder) {
         this.num = num;
-        this.timeOfOrder = timeOfOrder;
+        this.dateOfOrder = dateOfOrder;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
     @Id
     @GeneratedValue(generator = "increment")
@@ -31,20 +36,41 @@ public TheTable(){}
 
 
     @Temporal(TemporalType.DATE)
-    @Column(name="timeOfOrder",nullable = true, insertable = true, updatable = true)
-    public Date getTimeOfOrder() {
-        return timeOfOrder;
+    @Column(name="dateOfOrder",nullable = true, insertable = true)
+    public Date getDateOfOrder() {
+        return dateOfOrder;
     }
 
-    public void setTimeOfOrder(Date timeOfOrder) {
-        this.timeOfOrder = timeOfOrder;
+    public void setDateOfOrder(Date dateOfOrder) {
+        this.dateOfOrder = dateOfOrder;
+    }
+
+    @Temporal(TemporalType.TIME)
+    @Column(name="startTime")
+    public Time getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Time startTime) {
+        this.startTime = startTime;
+    }
+    @Temporal(TemporalType.TIME)
+    @Column(name="endTime")
+    public Time getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Time endTime) {
+        this.endTime = endTime;
     }
 
     @Override
     public String toString() {
         return "TheTable{" +
                 "num=" + num +
-                ", timeOfOrder=" + timeOfOrder +
+                ", dateOfOrder=" + dateOfOrder +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
                 '}';
     }
 }
