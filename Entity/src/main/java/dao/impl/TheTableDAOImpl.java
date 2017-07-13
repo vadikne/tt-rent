@@ -1,4 +1,4 @@
-﻿package main.java.dao.impl;
+package main.java.dao.impl;
 
 import main.java.dao.entity.TheTable;
 import main.java.dao.interfaces.TheTableDAO;
