@@ -1,4 +1,4 @@
-package main.java.dao.entity;
+package dao.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;

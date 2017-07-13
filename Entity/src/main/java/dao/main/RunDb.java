@@ -1,9 +1,10 @@
-package main.java.dao.main;
+package dao.main;
 
-import main.java.dao.entity.User;
-import main.java.util.Factory;
+import dao.entity.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import util.Factory;
+
 import java.sql.SQLException;
 
 public class RunDb {

@@ -1,10 +1,10 @@
-package main.java.dao.impl;
+package dao.impl;
 
-import main.java.dao.entity.User;
-import main.java.dao.interfaces.UserDAO;
-import main.java.util.HibernateUtil;
+import dao.entity.User;
+import dao.interfaces.UserDAO;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import util.HibernateUtil;
 
 import javax.swing.*;
 import java.sql.SQLException;

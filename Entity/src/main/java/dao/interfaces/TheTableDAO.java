@@ -1,6 +1,6 @@
-package main.java.dao.interfaces;
+package dao.interfaces;
 
-import main.java.dao.entity.TheTable;
+import dao.entity.TheTable;
 
 import java.sql.SQLException;
 

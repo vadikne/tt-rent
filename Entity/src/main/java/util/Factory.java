@@ -1,9 +1,9 @@
-package main.java.util;
+package util;
 
-import main.java.dao.impl.TheTableDAOImpl;
-import main.java.dao.impl.UserDAOImpl;
-import main.java.dao.interfaces.TheTableDAO;
-import main.java.dao.interfaces.UserDAO;
+import dao.impl.TheTableDAOImpl;
+import dao.impl.UserDAOImpl;
+import dao.interfaces.TheTableDAO;
+import dao.interfaces.UserDAO;
 
 public class Factory {
 
