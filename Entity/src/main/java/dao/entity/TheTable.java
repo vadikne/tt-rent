@@ -3,28 +3,41 @@ package dao.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.sql.Time;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
-@Table(name="theTable")
+@Table(name = "thetable")
 public class TheTable {
+    private long idOfTable;
     private int num;
-    private Date dateOfOrder;
-    private Time startTime;
-    private Time endTime;
+    private LocalDate dateOfOrder;
+    private int startTime;
+    private int endTime;
 
-public TheTable(){}
 
-    public TheTable(int num, Date dateOfOrder) {
+    public TheTable(int num, int startTime, int endTime){}
+  public TheTable(int num, LocalDate dateOfOrder, int startTime, int endTime) {
         this.num = num;
         this.dateOfOrder = dateOfOrder;
         this.startTime = startTime;
         this.endTime = endTime;
     }
+
+    public TheTable() {
+    }
+
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "idOfTable")
+    public long getIdOfTable() {
+        return idOfTable;
+    }
+
+    public void setIdOfTable(long idOfTable) {
+        this.idOfTable = idOfTable;
+    }
+
     @Column(name = "num")
     public int getNum() {
         return num;
@@ -35,38 +48,39 @@ public TheTable(){}
     }
 
 
-    @Temporal(TemporalType.DATE)
+   // @Temporal(TemporalType.DATE)
     @Column(name="dateOfOrder",nullable = true, insertable = true)
-    public Date getDateOfOrder() {
+    public LocalDate getDateOfOrder() {
         return dateOfOrder;
     }
 
-    public void setDateOfOrder(Date dateOfOrder) {
+    public void setDateOfOrder(LocalDate dateOfOrder) {
         this.dateOfOrder = dateOfOrder;
     }
 
-    @Temporal(TemporalType.TIME)
+
     @Column(name="startTime")
-    public Time getStartTime() {
+    public int getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Time startTime) {
+    public void setStartTime(int startTime) {
         this.startTime = startTime;
     }
-    @Temporal(TemporalType.TIME)
+
     @Column(name="endTime")
-    public Time getEndTime() {
+    public int getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Time endTime) {
+    public void setEndTime(int endTime) {
         this.endTime = endTime;
     }
 
     @Override
     public String toString() {
         return "TheTable{" +
+                "idOfTable=" +idOfTable+
                 "num=" + num +
                 ", dateOfOrder=" + dateOfOrder +
                 ", startTime=" + startTime +

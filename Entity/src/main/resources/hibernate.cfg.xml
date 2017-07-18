@@ -13,6 +13,6 @@
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">create-drop</property>
         <mapping class="dao.entity.User"/>
-
+        <mapping class="dao.entity.TheTable"/>
     </session-factory>
 </hibernate-configuration>
