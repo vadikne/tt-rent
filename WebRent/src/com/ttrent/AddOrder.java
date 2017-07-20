@@ -1,7 +1,9 @@
 package com.ttrent;
 
-/**
- * Created by owner on 18.07.2017.
- */
+import dao.entity.TheTable;
+import dao.entity.User;
+
 public class AddOrder {
-}
+
+
+    }

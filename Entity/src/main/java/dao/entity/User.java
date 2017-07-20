@@ -2,6 +2,8 @@ package dao.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -11,8 +13,16 @@ public class User {
     private String name;
     private String phoneNumber;
     private String password;
+   // private TheTable theTable;
+   // private Set<TheTable> theTableSet = new HashSet<>();
 
+  //@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+  // @JoinColumn(name = "idOfTable")
+  // public Set<TheTable> getTheTableSet() { return theTableSet; }
 
+  //  public void setTheTableSet(Set<TheTable> theTableSet) {
+  //      this.theTableSet = theTableSet;
+  //  }
     public User() {
         name = null;
     }
@@ -21,6 +31,7 @@ public class User {
         this.name=name;
         this.phoneNumber=phoneNumber;
         this.password=password;
+
     }
 
     @Id
@@ -53,7 +64,7 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    @Column(name = "password")
+    @Column(name = "password",nullable = true)
     public String getPassword() {
         return password;
     }

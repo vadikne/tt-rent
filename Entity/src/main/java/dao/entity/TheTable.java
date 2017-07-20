@@ -12,15 +12,18 @@ public class TheTable {
     private int num;
     private LocalDate dateOfOrder;
     private int startTime;
-    private int endTime;
+    private int timePlay;
+    private User user;
+
 
 
     public TheTable(int num, int startTime, int endTime){}
-  public TheTable(int num, LocalDate dateOfOrder, int startTime, int endTime) {
+  public TheTable(int num, LocalDate dateOfOrder, int startTime, int timePlay, User user) {
         this.num = num;
         this.dateOfOrder = dateOfOrder;
         this.startTime = startTime;
-        this.endTime = endTime;
+        this.timePlay = timePlay;
+        this.user = user;
     }
 
     public TheTable() {
@@ -68,13 +71,23 @@ public class TheTable {
         this.startTime = startTime;
     }
 
-    @Column(name="endTime")
+    @Column(name="timePlay")
     public int getEndTime() {
-        return endTime;
+        return timePlay;
     }
 
     public void setEndTime(int endTime) {
-        this.endTime = endTime;
+        this.timePlay = endTime;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //@JoinColumn(name = "idUser")
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -84,7 +97,8 @@ public class TheTable {
                 "num=" + num +
                 ", dateOfOrder=" + dateOfOrder +
                 ", startTime=" + startTime +
-                ", endTime=" + endTime +
+                ", timePlay=" + timePlay +
+                ", user=" + user+
                 '}';
     }
 }
