@@ -13,16 +13,9 @@ public class User {
     private String name;
     private String phoneNumber;
     private String password;
-   // private TheTable theTable;
-   // private Set<TheTable> theTableSet = new HashSet<>();
+    // private TheTable theTable;
+    private Set<TheTable> theTableSet = new HashSet<>();
 
-  //@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-  // @JoinColumn(name = "idOfTable")
-  // public Set<TheTable> getTheTableSet() { return theTableSet; }
-
-  //  public void setTheTableSet(Set<TheTable> theTableSet) {
-  //      this.theTableSet = theTableSet;
-  //  }
     public User() {
         name = null;
     }
@@ -31,7 +24,13 @@ public class User {
         this.name=name;
         this.phoneNumber=phoneNumber;
         this.password=password;
+        this.theTableSet=theTableSet;
+    }
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    public Set<TheTable> getTheTableSet() { return theTableSet; }
+    public void setTheTableSet(Set<TheTable> theTableSet) {
+        this.theTableSet = theTableSet;
     }
 
     @Id
@@ -55,7 +54,7 @@ public class User {
         this.name = name;
     }
 
-    @Column(name = "phoneNumber")
+    @Column(name = "phoneNumber" )//unique = true/)
     public String getPhoneNumber() {
         return phoneNumber;
     }

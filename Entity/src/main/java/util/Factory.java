@@ -22,6 +22,7 @@ public class Factory {
     public UserDAO getUserDAO() {
         if (userDAO == null) {
             userDAO = new UserDAOImpl();
+
         }
         return userDAO;
     }

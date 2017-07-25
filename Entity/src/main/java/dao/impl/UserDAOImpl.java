@@ -19,7 +19,7 @@ public class UserDAOImpl implements UserDAO{
             session.save(user);
             session.getTransaction().commit();
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"Ошибка I/O", JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Ошибка I/O --add user", JOptionPane.OK_OPTION);
         } finally {
             {
                 if(session !=null && session.isOpen()){
@@ -70,6 +70,17 @@ public class UserDAOImpl implements UserDAO{
                   }
         return idUser;
     }
+    public Long getUserIdByPhone(String phoneNumber) {
+        Long idUser = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Query query = session.createQuery("SELECT idUser FROM User WHERE phoneNumber =:paramPhoneNumber");
+            query.setParameter("paramPhoneNumber", phoneNumber);
+            idUser = (Long) query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return idUser;
+    }
     public User getUserById(long id) {
         User user = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -81,9 +92,20 @@ public class UserDAOImpl implements UserDAO{
         }
         return user;
     }
-
+    public User getUserByPhoneNumber(String phoneNumber) {
+        User user = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Query query = session.createQuery("FROM User WHERE phoneNumber =:paramPhoneNumber");
+            query.setParameter("paramPhoneNumber", phoneNumber);
+            user = (User) query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(user.toString()+"юзер из дао по тел");
+               return user;
+    }
     @Override
-    public void deleteUser(User user) {
+    public   void deleteUser(User user) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.beginTransaction();
             session.delete(user);

@@ -1,24 +1,27 @@
 package dao.entity;
 
+//import org.hibernate.annotations.Entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
+
 
 @Entity
 @Table(name = "thetable")
 public class TheTable {
     private long idOfTable;
     private int num;
-    private LocalDate dateOfOrder;
+    private Date dateOfOrder;
     private int startTime;
     private int timePlay;
     private User user;
+  //  long uId;
 
 
 
-    public TheTable(int num, int startTime, int endTime){}
-  public TheTable(int num, LocalDate dateOfOrder, int startTime, int timePlay, User user) {
+
+  public TheTable(int num, Date dateOfOrder, int startTime, int timePlay, User user) {
         this.num = num;
         this.dateOfOrder = dateOfOrder;
         this.startTime = startTime;
@@ -26,8 +29,19 @@ public class TheTable {
         this.user = user;
     }
 
+
+
     public TheTable() {
     }
+
+ //   public TheTable(int num, Date dateOfOrder, int startTime, int timePlay, long uId) {
+ //       this.num = num;
+ //       this.dateOfOrder = dateOfOrder;
+ //       this.startTime = startTime;
+ //       this.timePlay = timePlay;
+ //       this.uId=uId;
+ //   }
+
 
     @Id
     @GeneratedValue(generator = "increment")
@@ -53,11 +67,11 @@ public class TheTable {
 
    // @Temporal(TemporalType.DATE)
     @Column(name="dateOfOrder",nullable = true, insertable = true)
-    public LocalDate getDateOfOrder() {
+    public Date getDateOfOrder() {
         return dateOfOrder;
     }
 
-    public void setDateOfOrder(LocalDate dateOfOrder) {
+    public void setDateOfOrder(Date dateOfOrder) {
         this.dateOfOrder = dateOfOrder;
     }
 
@@ -81,6 +95,7 @@ public class TheTable {
     }
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+   //@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     //@JoinColumn(name = "idUser")
     public User getUser() {
         return user;

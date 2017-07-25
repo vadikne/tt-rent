@@ -10,7 +10,7 @@
         <description></description>
         <display-name>ttServlet</display-name>
         <servlet-name>ttServlet</servlet-name>
-        <servlet-class>com.ttrent.ttServlet</servlet-class>
+        <servlet-class>ttServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
