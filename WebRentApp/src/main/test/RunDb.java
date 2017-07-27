@@ -5,8 +5,8 @@ import dao.entity.User;
 import org.hibernate.SessionFactory;
 import java.sql.Date;
 import java.sql.SQLException;
-
-
+import java.text.SimpleDateFormat;
+import java.util.List;
 
 
 public class RunDb {
@@ -27,16 +27,20 @@ public class RunDb {
       //  System.out.println(theTable.toString());
       //  Factory.getInstance().getTheTableDAO().addTheTable(theTable);
         User user = new User("Иван из RunDb", "1234567890", null);
-        Date dateOfOrder = Date.valueOf("2017-07-20");
+       // Date dateOfOrder = Date.valueOf("2017-07-20");
+        Date dateOfOrder = new Date(new java.util.Date().getTime());
       TheTable theTable = new TheTable(1, dateOfOrder, 11, 2, user);
-
+        List<TheTable> tableList = null;
       try {
           //OrdersProc.addOrder(theTable);
-          OrdersProc.getOrdersForOneTable(1,dateOfOrder);
+         tableList= OrdersProc.getOrdersForOneTable(1,dateOfOrder);
       } catch (Exception e) {
-          System.out.println("Ошибка");
-          e.printStackTrace();
+        e.printStackTrace();
       }
+        SimpleDateFormat format1 = new SimpleDateFormat("dd.MM.yyyy");
+        for (TheTable order : tableList){
+        System.out.println("из мейн " + format1.format(order.getDateOfOrder()));
 
+        }
     }
     }

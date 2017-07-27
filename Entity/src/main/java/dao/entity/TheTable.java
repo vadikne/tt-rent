@@ -86,12 +86,12 @@ public class TheTable {
     }
 
     @Column(name="timePlay")
-    public int getEndTime() {
+    public int getTimePlay() {
         return timePlay;
     }
 
-    public void setEndTime(int endTime) {
-        this.timePlay = endTime;
+    public void setTimePlay(int timePlayime) {
+        this.timePlay = timePlay;
     }
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
